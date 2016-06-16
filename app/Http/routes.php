@@ -54,7 +54,7 @@ Route::get('user/{name}/index/{password}', function($n, $p){  //测试用  http:
 
 Route::get('user_{name}', function($n){
     return $n;
-});
+})->where(['name'=>'[0-9]+']);  //限定是字符串
 
 //Route::get('foo/{name?}', function($name = '你好'){ // 参数加?之后 , 对应的闭包函数中 的参数需要有默认值
 //    return $name;
