@@ -51,8 +51,12 @@ Route::group(['middleware'=>['web', 'login']], function(){  //中间件要用 Ro
   });
 });
 
-Route::group(['middleware'=>['web', 'login'], 'prefix'=>'index', 'namespace'=>'Index'],function(){
+Route::group(['middleware'=>['web'], 'prefix'=>'index', 'namespace'=>'Index'],function(){
   Route::get('index', 'IndexController@index');
   Route::get('content', 'IndexController@content');
+  Route::get('layout', 'IndexController@layout');
+  Route::get('getdb', 'IndexController@getDB');
+
+
   // Route::get('')
 });

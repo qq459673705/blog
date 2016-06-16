@@ -45,10 +45,12 @@
     </style>
   </head>
   <body>
+    @include('common.header', ['page'=>'内容'])
     <div class="content">
       <p class="line_2">
         内容部分的内容
       </p>
     </div>
+    @include('common.footer')
   </body>
 </html>

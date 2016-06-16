@@ -41,12 +41,21 @@
     </style>
   </head>
   <body>
-    @include('common.header', ['page'=>'首页'])
-    <div class="content">
-      <p class="line_2">
-        index内容
+    <!-- <div class="header">
+      <p class="line_1">
+        顶部栏
+      </p>
+    </div> -->
+    @include('common.header')
+    <!-- @yield('content') -->
+
+    @section('content')
+        <p class="line_3 footer"> 模板内容 </p>
+      @show
+    <div class="footer">
+      <p class="line_3">
+        引脚
       </p>
     </div>
-    @include('common.footer')
   </body>
 </html>
