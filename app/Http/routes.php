@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    session(['key'=>'hello']);
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     session(['key'=>'hello']);
+//     return view('welcome');
+// });
 
 // Route::get('index', 'Admin\IndexController@index');
 //
@@ -28,14 +28,25 @@ Route::get('/', function () {
 // // Route::get('user/text', ['as'=>'userText', 'uses'=>'Admin\UserController@text']);
 // Route::get('user/text', 'Admin\UserController@text')->name('userText');
 
-Route::group(['prefix'=>'user', 'namespace'=>'Admin'], function(){  //user, 和 admin 的提取
+Route::get('user/login', ['as'=>'login', 'uses'=>'Admin\UserController@login']);
+
+Route::group(['prefix'=>'user', 'namespace'=>'Admin', 'middleware'=>['web', 'login']], function(){  //user, 和 admin 的提取
     Route::get('index', 'UserController@index');
     Route::get('text', 'UserController@text');
-    Route::get('login', 'UserController@login');
     Route::resource('article', 'ArticleController');
 });
 
-Route::get('test', function(){
-  echo session('key');
-  return 'test';
+// Route::get('test', function(){
+//   echo session('key');
+//   return 'test';
+// });
+
+Route::group(['middleware'=>['web', 'login']], function(){  //中间件要用 Route::group来加载，中间件用来过滤
+  Route::get('/', function () {
+      return view('welcome');
+  });
+
+  Route::get('test', function(){
+    return 'test';
+  });
 });
