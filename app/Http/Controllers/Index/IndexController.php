@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Index;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use \Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -24,6 +25,7 @@ class IndexController extends Controller
 
     public function getDB(){
       $db = DB::connection()->getPdo();
+      dd($db);
       return view('welcome');
     }
 }
