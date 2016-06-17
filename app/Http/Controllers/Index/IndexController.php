@@ -30,8 +30,8 @@ class IndexController extends Controller
     {
 //      $db = DB::connection()->getPdo();
 //      dd($db);
-        $user = DB::table('user')->get();
-        dd($db);
+        $user = DB::table('user')->where('id', '>', 1)->get();
+        dd($user);
         return view('welcome');
     }
 }
